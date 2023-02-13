@@ -20,7 +20,6 @@ export default class Storage {
     localStorage.setItem("categories",JSON.stringify(categories))
   }
   static getAllProducts(sort="latest") {
-    console.log(sort);
     const products = JSON.parse(localStorage.getItem("products")) || [];
     return products.sort((a, b) => {
       if(sort==="latest"){
@@ -34,7 +33,6 @@ export default class Storage {
     const products =Storage.getAllProducts()
     const existedItem=products.find(c=>c.id===parseInt(newProduct.id))
     if (existedItem) {
-      console.log('b');
         existedItem.title=newProduct.title;
         existedItem.quantity=newProduct.quantity;
         existedItem.category=newProduct.category;

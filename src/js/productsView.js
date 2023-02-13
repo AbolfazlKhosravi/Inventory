@@ -145,7 +145,6 @@ class ProductsView {
   }
   Productupdate(e){
     e.preventDefault();
-    console.log(this.editId);
     const title =producttitleupdate.value;
     const quantity =productquantityupdate.value;
     const category =selectCatedgoryProductupdate.value;
