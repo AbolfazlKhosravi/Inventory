@@ -6,7 +6,6 @@ const btnCanselCtegory =document.getElementById("btn-Cansel-Ctegory")
 const discriptionDom =document.getElementById("category-discription")
 const selectCatedgoryProduct=document.getElementById("select-Catedgory-Product")
 const showAddCategoryList=document.getElementById("showAddCategoryList")
-
 class CategoryView {
   constructor() {
     btnAddCategory.addEventListener("click",(e)=>this.addCategory(e))

@@ -21,6 +21,7 @@
           <span class="text-sm">7</span>
         </div>
       </header>
+
       <section
         class=" hidden flex-col items-start justify-center container p-2 md:w-[35rem] xl:w-[37rem]"
         id="Catedgories"
@@ -55,12 +56,13 @@
           </div>
         </form>
       </section>
+
       <div
         class="flex flex-col items-start justify-center container p-2 md:w-[35rem] xl:w-[38rem]"
       >
         <button class="text-white cursor-pointer" id="showAddCategoryList">Add New Category ?</button>
       </div>
-  
+
 
 
       <section
@@ -70,6 +72,7 @@
           <div class="flex flex-col">
             <label>title</label>
             <input
+            id="product-title"
               type="text"
               class="mt-2 w-36 rounded-md p-1 bg-gray-600 ring-1 ring-gray-400 focus:outline-blue-700"
             />
@@ -77,6 +80,7 @@
           <div class="flex flex-col">
             <label>quantity</label>
             <input
+            id="product-quantity"
               type="number"
               class="mt-2 w-36 rounded-md p-1 bg-gray-600 ring-1 ring-gray-400 focus:outline-blue-700"
             />
@@ -90,10 +94,7 @@
             </select>
           </div>
           <div class="flex items-center justify-center mt-4 w-full gap-x-4">
-            <button class="w-full p-[.4rem] rounded-md bg-gray-600 text-white">
-              cansel
-            </button>
-            <button class="w-full p-[.4rem] rounded-md bg-gray-600 text-white">
+            <button class="w-full p-[.4rem] rounded-md bg-gray-600 text-white" id="add-newProduct">
               add new product
             </button>
           </div>
@@ -135,9 +136,10 @@
       >
         <h1 class="text-gray-200 text-[1.2rem]">Products List</h1>
         <div
+        id="products-List"
           class="flex flex-col items-start justify-center w-full overflow-x-auto pb-4"
         >
-          <div class="flex w-full items-center justify-between mt-2">
+          <!-- <div class="flex w-full items-center justify-between mt-2">
             <p class="text-gray-400 text-[1.1rem] pr-8">react</p>
             <div class="flex items-center justify-between">
               <p class="text-gray-400 text-[.9rem] mr-3">2002/10/8</p>
@@ -162,7 +164,7 @@
                 delete
               </button>
             </div>
-          </div>
+          </div> -->
         </div>
       </section>
     </div>
