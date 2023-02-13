@@ -23,7 +23,7 @@
       </header>
 
       <section
-        class=" hidden flex-col items-start justify-center container p-2 md:w-[35rem] xl:w-[37rem]"
+        class="hidden flex-col items-start justify-center container p-2 md:w-[35rem] xl:w-[37rem]"
         id="Catedgories"
       >
         <h2 class="text-white cursor-pointer">Add New Category</h2>
@@ -47,10 +47,16 @@
           <div
             class="flex items-center justify-center mt-4 px-2 w-full gap-x-4"
           >
-            <button class="w-1/2 p-1 rounded-md ring-1 ring-gray-500" id="btn-Cansel-Ctegory">
+            <button
+              class="w-1/2 p-1 rounded-md ring-1 ring-gray-500"
+              id="btn-Cansel-Ctegory"
+            >
               cansel
             </button>
-            <button class="w-1/2 p-1 rounded-md bg-gray-500 text-white" id="btn-Add-Ctegory">
+            <button
+              class="w-1/2 p-1 rounded-md bg-gray-500 text-white"
+              id="btn-Add-Ctegory"
+            >
               add category
             </button>
           </div>
@@ -60,7 +66,9 @@
       <div
         class="flex flex-col items-start justify-center container p-2 md:w-[35rem] xl:w-[38rem]"
       >
-        <button class="text-white cursor-pointer" id="showAddCategoryList">Add New Category ?</button>
+        <button class="text-white cursor-pointer" id="showAddCategoryList">
+          Add New Category ?
+        </button>
       </div>
 
       <section
@@ -70,7 +78,7 @@
           <div class="flex flex-col">
             <label>title</label>
             <input
-            id="product-title"
+              id="product-title"
               type="text"
               class="mt-2 w-36 rounded-md p-1 bg-gray-600 ring-1 ring-gray-400 focus:outline-blue-700"
             />
@@ -78,7 +86,7 @@
           <div class="flex flex-col">
             <label>quantity</label>
             <input
-            id="product-quantity"
+              id="product-quantity"
               type="number"
               class="mt-2 w-36 rounded-md p-1 bg-gray-600 ring-1 ring-gray-400 focus:outline-blue-700"
             />
@@ -88,11 +96,13 @@
               name="selectCategory"
               class="cursor-pointer mt-2 w-full rounded-md p-1 bg-gray-600 ring-1 ring-gray-400"
               id="select-Catedgory-Product"
-            >
-            </select>
+            ></select>
           </div>
           <div class="flex items-center justify-center mt-4 w-full gap-x-4">
-            <button class="w-full p-[.4rem] rounded-md bg-gray-600 text-white" id="add-newProduct">
+            <button
+              class="w-full p-[.4rem] rounded-md bg-gray-600 text-white"
+              id="add-newProduct"
+            >
               add new product
             </button>
           </div>
@@ -112,7 +122,7 @@
         <div class="flex items-start justify-between w-full mt-6">
           <p class="text-gray-400 text-md">sort</p>
           <select
-           id="sort-products"
+            id="sort-products"
             class="text-gray-400 rounded-lg w-36 px-1 py-[.4rem] bg-gray-800 ring-1 ring-gray-600"
           >
             <option value="latest">latest</option>
@@ -122,10 +132,9 @@
         <div class="flex items-start justify-between w-full mt-6">
           <p class="text-gray-400 text-md">category</p>
           <select
-           id="filter-category-products"
+            id="filter-category-products"
             class="text-gray-400 rounded-lg w-36 px-1 py-[.4rem] bg-gray-800 ring-1 ring-gray-600"
-          >
-          </select>
+          ></select>
         </div>
       </section>
       <section
@@ -133,7 +142,7 @@
       >
         <h1 class="text-gray-200 text-[1.2rem]">Products List</h1>
         <div
-        id="products-List"
+          id="products-List"
           class="flex flex-col items-start justify-center w-full overflow-x-auto pb-4"
         >
           <!-- <div class="flex w-full items-center justify-between mt-2">
@@ -164,7 +173,54 @@
           </div> -->
         </div>
       </section>
-      <div class="hidden text-white mt-2 text-lg" id="add-A-Product">Add a Product</div>
+
+      <div class="hidden text-white mt-2 text-lg" id="add-A-Product">
+        Add a Product
+      </div>
+
+      <section
+        class=" flex flex-col items-start justify-center container p-2 md:w-[35rem] xl:w-[37rem]"
+      >
+        <form class="hidden bg-gray-700 w-full text-gray-400 mt-3 rounded-md p-2 mb-4" id="edit-Form">
+          <div class="flex flex-col">
+            <label>title</label>
+            <input
+              id="product-title-update"
+              type="text"
+              class="mt-2 w-36 rounded-md p-1 bg-gray-600 ring-1 ring-gray-400 focus:outline-blue-700"
+            />
+          </div>
+          <div class="flex flex-col">
+            <label>quantity</label>
+            <input
+              id="product-quantity-update"
+              type="number"
+              class="mt-2 w-36 rounded-md p-1 bg-gray-600 ring-1 ring-gray-400 focus:outline-blue-700"
+            />
+          </div>
+          <div class="flex flex-col mt-3">
+            <select
+              name="selectCategory"
+              class="cursor-pointer mt-2 w-full rounded-md p-1 bg-gray-600 ring-1 ring-gray-400"
+              id="select-Catedgory-Product-update"
+            ></select>
+          </div>
+          <div class="flex items-center justify-center mt-4 w-full gap-x-4">
+            <button
+              class="w-full p-[.4rem] rounded-md bg-gray-600 text-white"
+              id="cansel-Product-update"
+            >
+              cansel
+            </button>
+            <button
+              class="w-full p-[.4rem] rounded-md bg-gray-600 text-white"
+              id="add-Product-update"
+            >
+              update
+            </button>
+          </div>
+        </form>
+      </section>
     </div>
     <script src="../src/js/app.js" type="module"></script>
   </body>

@@ -34,6 +34,7 @@ export default class Storage {
     const products =Storage.getAllProducts()
     const existedItem=products.find(c=>c.id===parseInt(newProduct.id))
     if (existedItem) {
+      console.log('b');
         existedItem.title=newProduct.title;
         existedItem.quantity=newProduct.quantity;
         existedItem.category=newProduct.category;

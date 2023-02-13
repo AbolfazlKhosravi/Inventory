@@ -8,6 +8,13 @@ const searchProductsDom = document.getElementById("search-products");
 const sortProductsDom = document.getElementById("sort-products");
 const filterCategoryProductsDom = document.getElementById("filter-category-products");
 const addAProduct = document.getElementById("add-A-Product");
+const editForm = document.getElementById("edit-Form");
+const canselProductupdateDom = document.getElementById("cansel-Product-update");
+const producttitleupdate = document.getElementById("product-title-update");
+const productquantityupdate = document.getElementById("product-quantity-update");
+const selectCatedgoryProductupdate = document.getElementById("select-Catedgory-Product-update");
+const addProductupdateDom = document.getElementById("add-Product-update");
+
 import Storage from "./storage.js";
 class ProductsView {
   constructor() {
@@ -15,7 +22,10 @@ class ProductsView {
     searchProductsDom.addEventListener("input",(e)=>this.searchProducts(e));
     sortProductsDom.addEventListener("change",(e)=>this.sortProducts(e));
     filterCategoryProductsDom.addEventListener("change",(e)=>this.filterCategoryProducts(e));
+    canselProductupdateDom.addEventListener("click",(e)=>this.cancelUpdateProduct(e))
+    addProductupdateDom.addEventListener("click",(e)=>this.Productupdate(e))
     this.products = [];
+    this.editId=null;
   }
   addNewProduct(e) {
     e.preventDefault();
@@ -61,7 +71,8 @@ class ProductsView {
                 ${findCategory(p.category)}
               </span>
               <button
-                class="text-gray-400 text-[.9rem] mr-3 px-2 py-[.1rem] ring-1 ring-gray-500 rounded-xl"
+                data-id=${p.id}
+                class="edit-product text-gray-400 text-[.9rem] mr-3 px-2 py-[.1rem] ring-1 ring-gray-500 rounded-xl"
               >
                 Edit
               </button>
@@ -83,6 +94,10 @@ class ProductsView {
     const deleteBtns=[...document.querySelectorAll(".delete-Product")]
     deleteBtns.forEach(btn=>{
       return btn.addEventListener("click",(e)=>this.deleteProduct(e))
+    })
+    const editBtns=[...document.querySelectorAll(".edit-product")]
+    editBtns.forEach(btn=>{
+      return btn.addEventListener("click",(e)=>this.editProduct(e))
     })
   }
   searchProducts(e){
@@ -112,6 +127,37 @@ class ProductsView {
       addAProduct.classList.remove("hidden")
     }
 
+  }
+  editProduct(e){
+    editForm.classList.remove("hidden")
+    prodcuctsList.classList.add("hidden")
+    // console.log(e.target.dataset.id);
+   const product= this.products.find(p=>p.id===parseInt(e.target.dataset.id))
+   this.editId=e.target.dataset.id
+   producttitleupdate.value=product.title
+   productquantityupdate.value=product.quantity
+   selectCatedgoryProductupdate.value=product.category
+  }
+  cancelUpdateProduct(e){
+    e.preventDefault()
+    editForm.classList.add("hidden")
+    prodcuctsList.classList.remove("hidden")
+  }
+  Productupdate(e){
+    e.preventDefault();
+    console.log(this.editId);
+    const title =producttitleupdate.value;
+    const quantity =productquantityupdate.value;
+    const category =selectCatedgoryProductupdate.value;
+    if (!title || !quantity || !category) return alert("plese writing all");
+    Storage.saveProducts({ title, quantity, category,id:this.editId });
+    this.products = Storage.getAllProducts();
+    this.createdProductsList(this.products);
+    editForm.classList.add("hidden")
+    prodcuctsList.classList.remove("hidden")
+    titleDom.value = "";
+    quantityDom.value = "";
+    categoryDom.value = "";
   }
 }
 export default new ProductsView();

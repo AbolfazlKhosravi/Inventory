@@ -7,6 +7,7 @@ const discriptionDom =document.getElementById("category-discription")
 const selectCatedgoryProduct=document.getElementById("select-Catedgory-Product")
 const showAddCategoryList=document.getElementById("showAddCategoryList")
 const filterCategoryProducts = document.getElementById("filter-category-products");
+const selectCatedgoryProductupdate = document.getElementById("select-Catedgory-Product-update");
 class CategoryView {
   constructor() {
     btnAddCategory.addEventListener("click",(e)=>this.addCategory(e))
@@ -40,6 +41,7 @@ class CategoryView {
       return  result += `<option value=${category.id}>${category.title}</option>`
     });
     selectCatedgoryProduct.innerHTML=result;
+    selectCatedgoryProductupdate.innerHTML=result;
   }
   createdFilterCatedgoryProducts(categories){
     let result=`<option value="">all</option>`
