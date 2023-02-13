@@ -7,6 +7,7 @@ const lengthProducts = document.getElementById("length-Products");
 const searchProductsDom = document.getElementById("search-products");
 const sortProductsDom = document.getElementById("sort-products");
 const filterCategoryProductsDom = document.getElementById("filter-category-products");
+const addAProduct = document.getElementById("add-A-Product");
 import Storage from "./storage.js";
 class ProductsView {
   constructor() {
@@ -26,6 +27,7 @@ class ProductsView {
     this.products = Storage.getAllProducts();
     this.createdProductsList(this.products);
     lengthProducts.textContent=this.products.length;
+    addAProduct.classList.add("hidden")
     titleDom.value = "";
     quantityDom.value = "";
     categoryDom.value = "";
@@ -33,6 +35,9 @@ class ProductsView {
   setApp() {
     this.products = Storage.getAllProducts();
     this.createdProductsList(this.products);
+    if(!this.products.length){
+      addAProduct.classList.remove("hidden")
+    }
     lengthProducts.textContent=this.products.length
   }
   createdProductsList(products) {
@@ -66,7 +71,8 @@ class ProductsView {
             ${p.quantity}
               </span>
               <button
-                class="mr-[.1rem] text-red-400 text-[.9rem] px-2 py-[.1rem] ring-1 ring-red-400 rounded-xl"
+                class="delete-Product mr-[.1rem] text-red-400 text-[.9rem] px-2 py-[.1rem] ring-1 ring-red-400 rounded-xl"
+                data-id=${p.id}
               >
                 delete
               </button>
@@ -74,6 +80,10 @@ class ProductsView {
           </div>`);
     });
     prodcuctsList.innerHTML = result;
+    const deleteBtns=[...document.querySelectorAll(".delete-Product")]
+    deleteBtns.forEach(btn=>{
+      return btn.addEventListener("click",(e)=>this.deleteProduct(e))
+    })
   }
   searchProducts(e){
     const filterdProducts=this.products.filter(p=>{
@@ -82,18 +92,26 @@ class ProductsView {
     this.createdProductsList(filterdProducts)
   }
   sortProducts(e){
-    console.log(e.target.value);
     this.products= Storage.getAllProducts(e.target.value)
-    console.log(this.products);
      this.createdProductsList(this.products)
-
   }
   filterCategoryProducts(e){
     console.log(e.target.value);
-    const filteredProducts=this.products.filter(p=>(
-      p.category==e.target.value
-    ))
+    const filteredProducts=this.products.filter(p=>{
+      if(e.target.value=="") return p
+      return p.category==e.target.value
+  })
     this.createdProductsList(filteredProducts)
+  }
+  deleteProduct(e){
+    console.log(e.target.dataset.id);
+    Storage.deleteProducts(e.target.dataset.id)
+    this.products= Storage.getAllProducts()
+     this.createdProductsList(this.products)
+     if(!this.products.length){
+      addAProduct.classList.remove("hidden")
+    }
+
   }
 }
 export default new ProductsView();
