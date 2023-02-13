@@ -2,7 +2,7 @@ export default class Storage {
   static getAllCategories() {
     const categories = JSON.parse(localStorage.getItem("categories")) || [];
     return categories.sort((a, b) => {
-      return new Date(a.createdAt) > new Date(b.createdAt) ? -1 : 1;
+        return new Date(a.createdAt) > new Date(b.createdAt) ? -1 : 1;
     });
   }
   static saveCategories(newCategory){
@@ -19,10 +19,15 @@ export default class Storage {
     }
     localStorage.setItem("categories",JSON.stringify(categories))
   }
-  static getAllProducts() {
+  static getAllProducts(sort="latest") {
+    console.log(sort);
     const products = JSON.parse(localStorage.getItem("products")) || [];
     return products.sort((a, b) => {
-      return new Date(a.createdAt) > new Date(b.createdAt) ? -1 : 1;
+      if(sort==="latest"){
+        return new Date(a.createdAt) > new Date(b.createdAt) ? -1 : 1;
+      }else if(sort==="earliest"){
+        return new Date(a.createdAt) > new Date(b.createdAt) ? 1 : -1;
+      }
     });
   }
   static saveProducts(newProduct){

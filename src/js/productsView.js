@@ -4,10 +4,16 @@ const quantityDom = document.getElementById("product-quantity");
 const categoryDom = document.getElementById("select-Catedgory-Product");
 const prodcuctsList = document.getElementById("products-List");
 const lengthProducts = document.getElementById("length-Products");
+const searchProductsDom = document.getElementById("search-products");
+const sortProductsDom = document.getElementById("sort-products");
+const filterCategoryProductsDom = document.getElementById("filter-category-products");
 import Storage from "./storage.js";
 class ProductsView {
   constructor() {
     addNewProductbtn.addEventListener("click", (e) => this.addNewProduct(e));
+    searchProductsDom.addEventListener("input",(e)=>this.searchProducts(e));
+    sortProductsDom.addEventListener("change",(e)=>this.sortProducts(e));
+    filterCategoryProductsDom.addEventListener("change",(e)=>this.filterCategoryProducts(e));
     this.products = [];
   }
   addNewProduct(e) {
@@ -18,7 +24,7 @@ class ProductsView {
     if (!title || !quantity || !category) return alert("plese writing all");
     Storage.saveProducts({ title, quantity, category });
     this.products = Storage.getAllProducts();
-    this.createdProductsList();
+    this.createdProductsList(this.products);
     lengthProducts.textContent=this.products.length;
     titleDom.value = "";
     quantityDom.value = "";
@@ -26,10 +32,10 @@ class ProductsView {
   }
   setApp() {
     this.products = Storage.getAllProducts();
-    this.createdProductsList();
+    this.createdProductsList(this.products);
     lengthProducts.textContent=this.products.length
   }
-  createdProductsList() {
+  createdProductsList(products) {
     let result = "";
     const findCategory = (id) => {
       const category = Storage.getAllCategories().find(
@@ -37,7 +43,7 @@ class ProductsView {
       );
       return category.title;
     };
-    this.products.forEach((p) => {
+    products.forEach((p) => {
       return (result += ` <div class="flex w-full items-center justify-between mt-2">
             <p class="text-gray-400 text-[1.1rem] pr-8">${p.title}</p>
             <div class="flex items-center justify-between">
@@ -68,6 +74,26 @@ class ProductsView {
           </div>`);
     });
     prodcuctsList.innerHTML = result;
+  }
+  searchProducts(e){
+    const filterdProducts=this.products.filter(p=>{
+      return p.title.toLowerCase().includes(e.target.value.toLowerCase().trim())
+    })
+    this.createdProductsList(filterdProducts)
+  }
+  sortProducts(e){
+    console.log(e.target.value);
+    this.products= Storage.getAllProducts(e.target.value)
+    console.log(this.products);
+     this.createdProductsList(this.products)
+
+  }
+  filterCategoryProducts(e){
+    console.log(e.target.value);
+    const filteredProducts=this.products.filter(p=>(
+      p.category==e.target.value
+    ))
+    this.createdProductsList(filteredProducts)
   }
 }
 export default new ProductsView();

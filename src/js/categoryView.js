@@ -6,6 +6,7 @@ const btnCanselCtegory =document.getElementById("btn-Cansel-Ctegory")
 const discriptionDom =document.getElementById("category-discription")
 const selectCatedgoryProduct=document.getElementById("select-Catedgory-Product")
 const showAddCategoryList=document.getElementById("showAddCategoryList")
+const filterCategoryProducts = document.getElementById("filter-category-products");
 class CategoryView {
   constructor() {
     btnAddCategory.addEventListener("click",(e)=>this.addCategory(e))
@@ -21,6 +22,7 @@ class CategoryView {
     Storage.saveCategories({title,discription})
     this.categories=Storage.getAllCategories()
     this.createdCategoryList()
+    this.createdFilterCatedgoryProducts( this.categories)
     titleDom.value="";
     discriptionDom.value="";
     CatedgoriesDom.classList.add("hidden")
@@ -29,6 +31,7 @@ class CategoryView {
   setApp(){
     this.categories=Storage.getAllCategories() 
     this.createdCategoryList()
+    this.createdFilterCatedgoryProducts( this.categories)
   }
    createdCategoryList(){
     let result='<option value="">select a Category</option>';
@@ -38,6 +41,13 @@ class CategoryView {
     });
     selectCatedgoryProduct.innerHTML=result;
   }
+  createdFilterCatedgoryProducts(categories){
+    let result=`<option value="">all</option>`
+    categories.forEach((c)=>{
+     return result +=`<option value=${c.id}>${c.title}</option>`
+    })
+    filterCategoryProducts.innerHTML=result
+   }
   cancelCategory(e){
     e.preventDefault()
     CatedgoriesDom.classList.add("hidden")
