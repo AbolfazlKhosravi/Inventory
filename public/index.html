@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>inventory</title>
+    <link href="/public/tailwind.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div
+      class="min-h-screen bg-gray-900 flex flex-col items-center justify-start"
+    >
+      <header
+        class="flex w-full justify-center items-center py-4 text-white font-bold bg-gray-700"
+      >
+        <h1>Inventory App using js</h1>
+        <div
+          class="ml-2 bg-gray-600 w-5 h-5 flex justify-center items-center rounded-full ring-2 ring-white"
+        >
+          <span class="text-sm">7</span>
+        </div>
+      </header>
+      <section
+        class=" hidden flex-col items-start justify-center container p-2 md:w-[35rem] xl:w-[37rem]"
+        id="Catedgories"
+      >
+        <h2 class="text-white cursor-pointer">Add New Category</h2>
+        <form class="bg-gray-700 w-full text-gray-400 mt-3 rounded-md p-2">
+          <div class="flex flex-col">
+            <label for="titleCategor" class="cursor-pointer">title</label>
+            <input
+              type="text"
+              name="titleCategor"
+              id="category-title"
+              class="mt-2 w-36 rounded-md p-1 bg-gray-600 ring-1 ring-gray-400 focus:outline-blue-700"
+            />
+          </div>
+          <div class="flex flex-col mt-3">
+            <label>description</label>
+            <textarea
+              id="category-discription"
+              class="mt-2 w-full rounded-md p-1 bg-gray-600 ring-1 ring-gray-400"
+            ></textarea>
+          </div>
+          <div
+            class="flex items-center justify-center mt-4 px-2 w-full gap-x-4"
+          >
+            <button class="w-1/2 p-1 rounded-md ring-1 ring-gray-500" id="btn-Cansel-Ctegory">
+              cansel
+            </button>
+            <button class="w-1/2 p-1 rounded-md bg-gray-500 text-white" id="btn-Add-Ctegory">
+              add category
+            </button>
+          </div>
+        </form>
+      </section>
+      <div
+        class="flex flex-col items-start justify-center container p-2 md:w-[35rem] xl:w-[38rem]"
+      >
+        <button class="text-white cursor-pointer" id="showAddCategoryList">Add New Category ?</button>
+      </div>
+  
+
+
+      <section
+        class="flex flex-col items-start justify-center container p-2 md:w-[35rem] xl:w-[37rem]"
+      >
+        <form class="bg-gray-700 w-full text-gray-400 mt-3 rounded-md p-2">
+          <div class="flex flex-col">
+            <label>title</label>
+            <input
+              type="text"
+              class="mt-2 w-36 rounded-md p-1 bg-gray-600 ring-1 ring-gray-400 focus:outline-blue-700"
+            />
+          </div>
+          <div class="flex flex-col">
+            <label>quantity</label>
+            <input
+              type="number"
+              class="mt-2 w-36 rounded-md p-1 bg-gray-600 ring-1 ring-gray-400 focus:outline-blue-700"
+            />
+          </div>
+          <div class="flex flex-col mt-3">
+            <select
+              name="selectCategory"
+              class="cursor-pointer mt-2 w-full rounded-md p-1 bg-gray-600 ring-1 ring-gray-400"
+              id="select-Catedgory-Product"
+            >
+            </select>
+          </div>
+          <div class="flex items-center justify-center mt-4 w-full gap-x-4">
+            <button class="w-full p-[.4rem] rounded-md bg-gray-600 text-white">
+              cansel
+            </button>
+            <button class="w-full p-[.4rem] rounded-md bg-gray-600 text-white">
+              add new product
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section
+        class="flex flex-col items-start justify-center container p-2 md:w-[35rem] xl:w-[37rem]"
+      >
+        <div class="flex items-start justify-between w-full mt-2">
+          <p class="text-gray-400 text-md">serch</p>
+          <input
+            class="text-gray-400 bg-gray-800 px-1 py-[.4rem] ring-1 ring-gray-600 rounded-lg"
+          />
+        </div>
+        <div class="flex items-start justify-between w-full mt-6">
+          <p class="text-gray-400 text-md">sort</p>
+          <select
+            class="text-gray-400 rounded-lg w-36 px-1 py-[.4rem] bg-gray-800 ring-1 ring-gray-600"
+          >
+            <option value="latest">latest</option>
+            <option value="earliest ">earliest</option>
+          </select>
+        </div>
+        <div class="flex items-start justify-between w-full mt-6">
+          <p class="text-gray-400 text-md">category</p>
+          <select
+            class="text-gray-400 rounded-lg w-36 px-1 py-[.4rem] bg-gray-800 ring-1 ring-gray-600"
+          >
+            <option value="">all</option>
+          </select>
+        </div>
+      </section>
+
+      <div class="text-white mt-6 text-lg">Add a Product</div>
+
+      <section
+        class="mt-4 flex flex-col items-start justify-center container p-2 md:w-[35rem] xl:w-[37rem]"
+      >
+        <h1 class="text-gray-200 text-[1.2rem]">Products List</h1>
+        <div
+          class="flex flex-col items-start justify-center w-full overflow-x-auto pb-4"
+        >
+          <div class="flex w-full items-center justify-between mt-2">
+            <p class="text-gray-400 text-[1.1rem] pr-8">react</p>
+            <div class="flex items-center justify-between">
+              <p class="text-gray-400 text-[.9rem] mr-3">2002/10/8</p>
+              <span
+                class="text-gray-400 text-[.9rem] mr-3 px-2 py-[.1rem] ring-1 ring-gray-500 rounded-xl"
+              >
+                react
+              </span>
+              <button
+                class="text-gray-400 text-[.9rem] mr-3 px-2 py-[.1rem] ring-1 ring-gray-500 rounded-xl"
+              >
+                Edit
+              </button>
+              <span
+                class="text-gray-400 text-[.9rem] bg-gray-600 mr-3 w-6 h-6 flex items-center justify-center ring-2 ring-gray-500 rounded-full"
+              >
+                8
+              </span>
+              <button
+                class="mr-[.1rem] text-red-400 text-[.9rem] px-2 py-[.1rem] ring-1 ring-red-400 rounded-xl"
+              >
+                delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="../src/js/app.js" type="module"></script>
+  </body>
+</html>
