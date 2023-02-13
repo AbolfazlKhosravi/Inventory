@@ -29,16 +29,16 @@
         <h2 class="text-white cursor-pointer">Add New Category</h2>
         <form class="bg-gray-700 w-full text-gray-400 mt-3 rounded-md p-2">
           <div class="flex flex-col">
-            <label for="titleCategor" class="cursor-pointer">title</label>
+            <label for="category-title" class="cursor-pointer">title</label>
             <input
               type="text"
-              name="titleCategor"
+              name="category-title"
               id="category-title"
               class="mt-2 w-36 rounded-md p-1 bg-gray-600 ring-1 ring-gray-400 focus:outline-blue-700"
             />
           </div>
           <div class="flex flex-col mt-3">
-            <label>description</label>
+            <label for="category-discription" class="cursor-pointer">description</label>
             <textarea
               id="category-discription"
               class="mt-2 w-full rounded-md p-1 bg-gray-600 ring-1 ring-gray-400"
@@ -76,7 +76,7 @@
       >
         <form class="bg-gray-700 w-full text-gray-400 mt-3 rounded-md p-2">
           <div class="flex flex-col">
-            <label>title</label>
+            <label for="product-title" class="cursor-pointer">title</label>
             <input
               id="product-title"
               type="text"
@@ -84,7 +84,7 @@
             />
           </div>
           <div class="flex flex-col">
-            <label>quantity</label>
+            <label for="product-quantity" class="cursor-pointer mt-2">quantity</label>
             <input
               id="product-quantity"
               type="number"
@@ -116,14 +116,14 @@
           <p class="text-gray-400 text-md">serch</p>
           <input
             id="search-products"
-            class="text-gray-400 bg-gray-800 px-1 py-[.4rem] ring-1 ring-gray-600 rounded-lg"
+            class="cursor-pointer text-gray-400 bg-gray-800 px-1 py-[.4rem] ring-1 ring-gray-600 rounded-lg"
           />
         </div>
         <div class="flex items-start justify-between w-full mt-6">
           <p class="text-gray-400 text-md">sort</p>
           <select
             id="sort-products"
-            class="text-gray-400 rounded-lg w-36 px-1 py-[.4rem] bg-gray-800 ring-1 ring-gray-600"
+            class="cursor-pointer text-gray-400 rounded-lg w-36 px-1 py-[.4rem] bg-gray-800 ring-1 ring-gray-600"
           >
             <option value="latest">latest</option>
             <option value="earliest ">earliest</option>
@@ -133,7 +133,7 @@
           <p class="text-gray-400 text-md">category</p>
           <select
             id="filter-category-products"
-            class="text-gray-400 rounded-lg w-36 px-1 py-[.4rem] bg-gray-800 ring-1 ring-gray-600"
+            class="cursor-pointer text-gray-400 rounded-lg w-36 px-1 py-[.4rem] bg-gray-800 ring-1 ring-gray-600"
           ></select>
         </div>
       </section>
@@ -179,11 +179,11 @@
       </div>
 
       <section
-        class=" flex flex-col items-start justify-center container p-2 md:w-[35rem] xl:w-[37rem]"
+        class=" flex flex-col items-start justify-center container p-2 md:w-[35rem] xl:w-[37rem] "
       >
-        <form class="hidden bg-gray-700 w-full text-gray-400 mt-3 rounded-md p-2 mb-4" id="edit-Form">
+        <form class="hidden bg-gray-700 w-full text-gray-400 mt-3 rounded-md p-2 mb-8" id="edit-Form">
           <div class="flex flex-col">
-            <label>title</label>
+            <label for="product-title-update" class="cursor-pointer">title</label>
             <input
               id="product-title-update"
               type="text"
@@ -191,7 +191,7 @@
             />
           </div>
           <div class="flex flex-col">
-            <label>quantity</label>
+            <label for="product-quantity-update" class="cursor-pointer">quantity</label>
             <input
               id="product-quantity-update"
               type="number"

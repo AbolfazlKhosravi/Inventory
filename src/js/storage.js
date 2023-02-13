@@ -22,9 +22,9 @@ export default class Storage {
   static getAllProducts(sort="latest") {
     const products = JSON.parse(localStorage.getItem("products")) || [];
     return products.sort((a, b) => {
-      if(sort==="latest"){
+      if(sort=="latest"){
         return new Date(a.createdAt) > new Date(b.createdAt) ? -1 : 1;
-      }else if(sort==="earliest"){
+      }else{
         return new Date(a.createdAt) > new Date(b.createdAt) ? 1 : -1;
       }
     });
