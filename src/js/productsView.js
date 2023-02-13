@@ -3,6 +3,7 @@ const titleDom = document.getElementById("product-title");
 const quantityDom = document.getElementById("product-quantity");
 const categoryDom = document.getElementById("select-Catedgory-Product");
 const prodcuctsList = document.getElementById("products-List");
+const lengthProducts = document.getElementById("length-Products");
 import Storage from "./storage.js";
 class ProductsView {
   constructor() {
@@ -18,6 +19,7 @@ class ProductsView {
     Storage.saveProducts({ title, quantity, category });
     this.products = Storage.getAllProducts();
     this.createdProductsList();
+    lengthProducts.textContent=this.products.length;
     titleDom.value = "";
     quantityDom.value = "";
     categoryDom.value = "";
@@ -25,6 +27,7 @@ class ProductsView {
   setApp() {
     this.products = Storage.getAllProducts();
     this.createdProductsList();
+    lengthProducts.textContent=this.products.length
   }
   createdProductsList() {
     let result = "";
